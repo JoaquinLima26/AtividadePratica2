@@ -34,7 +34,7 @@ public class Sistema {
                 System.out.print("Força: ");
                 forca = Console.lerFloat();
                 System.out.print("Aurea: ");
-                String aurea = Console.lerFloat();
+                float aurea = Console.lerFloat();
 
                 // instância temporária de Cavaleiro:
                 Cavaleiro cavaleiro = new Cavaleiro(nome, vida, forca, aurea);
@@ -58,7 +58,7 @@ public class Sistema {
                 System.out.print("Força: ");
                 forca = Console.lerFloat();
                 System.out.print("Mana: ");
-                String mana = Console.lerFloat();
+                float mana = Console.lerFloat();
 
                 // instância temporária de Mago:
                 Mago mago = new Mago(nome, vida, forca, mana);
@@ -82,7 +82,7 @@ public class Sistema {
                 System.out.print("Força: ");
                 forca = Console.lerFloat();
                 System.out.print("Fé: ");
-                String fe = Console.lerFloat();
+                float fe = Console.lerFloat();
 
                 // instância temporária de Sacerdote:
                 Sacerdote sacerdote = new Sacerdote(nome, vida, forca, fe);
@@ -148,11 +148,11 @@ public class Sistema {
 
                 System.out.println("\nREMOVER PERSONAGEM");
                 System.out.print("Informe o nome do personagem: ");
-                nome = Console.letString();
+                nome = Console.lerString();
 
-                // tenta excluir funcionario com base na matricula
+                // tenta excluir personagem com base no nome
                 // informada. O método abaixo retornará true, caso
-                // tenha excluído o funcionario, e false, caso não.
+                // tenha excluído o personagem, e false, caso não.
                 if (CadastroPersonagem.excluir(nome)) {
                     System.out.println("\nPersonagem foi removido com sucesso!");
                 } else {
