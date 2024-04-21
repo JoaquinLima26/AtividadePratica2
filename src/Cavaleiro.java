@@ -2,7 +2,7 @@ public class Cavaleiro extends Personagem{
     
     private float aurea;
 
-    public Mago(String nome, float vida, float forca, float aurea){
+    public Cavaleiro(String nome, float vida, float forca, float aurea){
         super(nome, vida, forca);
         this.aurea = aurea;
     }

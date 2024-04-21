@@ -2,7 +2,7 @@ public class Sacerdote extends Personagem{
     
     private float fe;
 
-    public Mago(String nome, float vida, float forca, float fe){
+    public Sacerdote(String nome, float vida, float forca, float fe){
         super(nome, vida, forca);
         this.fe = fe;
     }
