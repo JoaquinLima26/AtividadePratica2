@@ -2,12 +2,12 @@ public class Sacerdote extends Personagem{
     
     private float fe;
 
-    public Sacerdote(String nome, float vida, float forca, float fe){
-        super(nome, vida, forca);
+    public Sacerdote(int id, String nome, float vida, float forca, float fe){
+        super(id, nome, vida, forca);
         this.fe = fe;
     }
 
-    public String getFe(){
+    public float getFe(){
         return fe;
     }
 
@@ -15,8 +15,9 @@ public class Sacerdote extends Personagem{
         this.fe = fe;
     }
 
-    public String totring(){
+    @Override
+    public String toString(){
 
-        return super.totring() + "\nFe: " + fe;
+        return super.toString() + "\nFe: " + fe;
     }
 }

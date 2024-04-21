@@ -11,6 +11,7 @@ public class Sistema {
         System.out.println("6) Listar todos os Magos");
         System.out.println("7) Listar todos os Sacerdotes");
         System.out.println("8) Remover Personagem");
+        System.out.println("9) Remover Lista");
         System.out.println("0) Sair");
         System.out.print("Informe uma opção:");
 
@@ -18,6 +19,7 @@ public class Sistema {
 
     private static void verificarOpcao(int op) {
 
+        int id;
         String nome;
         float vida;
         float forca;
@@ -26,7 +28,9 @@ public class Sistema {
             case 1:
 
                 System.out.println("\nCADASTRO DE CAVALEIRO:");
-                // leitura dos dados
+
+                System.out.print("Id: ");
+                id = Console.lerInt();
                 System.out.print("Nome: ");
                 nome = Console.lerString();
                 System.out.print("Vida: ");
@@ -36,13 +40,10 @@ public class Sistema {
                 System.out.print("Aurea: ");
                 float aurea = Console.lerFloat();
 
-                // instância temporária de Cavaleiro:
-                Cavaleiro cavaleiro = new Cavaleiro(nome, vida, forca, aurea);
+                Cavaleiro cavaleiro = new Cavaleiro(id, nome, vida, forca, aurea);
 
-                // Adicionar cavaleiro na lista de personagens:
-                CadastroPersonagem.cadastrar(cavaleiro);
+                CadastroPersonagens.cadastrar(cavaleiro);
 
-                // Sucesso:
                 System.out.println("\nCavaleiro cadastrado com sucesso!");
 
                 break;
@@ -50,7 +51,9 @@ public class Sistema {
             case 2:
 
                 System.out.println("\nCADASTRO DE MAGO:");
-                // leitura dos dados
+
+                System.out.print("Id: ");
+                id = Console.lerInt();
                 System.out.print("Nome: ");
                 nome = Console.lerString();
                 System.out.print("Vida: ");
@@ -60,13 +63,10 @@ public class Sistema {
                 System.out.print("Mana: ");
                 float mana = Console.lerFloat();
 
-                // instância temporária de Mago:
-                Mago mago = new Mago(nome, vida, forca, mana);
+                Mago mago = new Mago(id, nome, vida, forca, mana);
 
-                // Adicionar mago na lista de personagens:
-                CadastroPersonagem.cadastrar(mago);
+                CadastroPersonagens.cadastrar(mago);
 
-                // Sucesso:
                 System.out.println("\nMago cadastrado com sucesso!");
 
                 break;
@@ -75,6 +75,8 @@ public class Sistema {
 
                 System.out.println("\nCADASTRO DE SACERDOTE:");
                 // leitura dos dados
+                System.out.print("Id: ");
+                id = Console.lerInt();
                 System.out.print("Nome: ");
                 nome = Console.lerString();
                 System.out.print("Vida: ");
@@ -84,26 +86,23 @@ public class Sistema {
                 System.out.print("Fé: ");
                 float fe = Console.lerFloat();
 
-                // instância temporária de Sacerdote:
-                Sacerdote sacerdote = new Sacerdote(nome, vida, forca, fe);
+                Sacerdote sacerdote = new Sacerdote(id, nome, vida, forca, fe);
 
-                // Adicionar sacerdote na lista de personagens:
-                CadastroPersonagem.cadastrar(sacerdote);
+                CadastroPersonagens.cadastrar(sacerdote);
 
-                // Sucesso:
                 System.out.println("\nSacerdote cadastrado com sucesso!");
 
                 break;
 
             case 4:
 
-                if (CadastroPersonagem.getListaPersonagens().size() == 0) {
+                if (CadastroPersonagens.getListaPersonagens().size() == 0) {
                     System.out.println("Não há personagens cadastrados...");
                     break;
                 }
 
                 System.out.println("\nPERSONAGENS CADASTRADOS:");
-                for (Personagem tempPersonagem : CadastroPersonagem.getListaPersonagens()) {
+                for (Personagem tempPersonagem : CadastroPersonagens.getListaPersonagens()) {
                     System.out.println(tempPersonagem);
                 }
 
@@ -113,7 +112,7 @@ public class Sistema {
 
                 System.out.println("\nCAVALEIROS CADASTRADOS:");
 
-                for (Personagem tempPersonagem : CadastroPersonagem.getCavaleiros()) {
+                for (Personagem tempPersonagem : CadastroPersonagens.getCavaleiros()) {
                     System.out.println(tempPersonagem);
                 }
 
@@ -122,7 +121,7 @@ public class Sistema {
             case 6:
 
                 System.out.println("\nMAGOS CADASTRADOS:");
-                for (Personagem tempPersonagem : CadastroPersonagem.getListaPersonagens()) {
+                for (Personagem tempPersonagem : CadastroPersonagens.getListaPersonagens()) {
 
                     if (tempPersonagem instanceof Mago) {
                         System.out.println(tempPersonagem);
@@ -135,7 +134,7 @@ public class Sistema {
             case 7:
 
                 System.out.println("\nSACERDOTE CADASTRADOS:");
-                for (Personagem tempPersonagem : CadastroPersonagem.getListaPersonagens()) {
+                for (Personagem tempPersonagem : CadastroPersonagens.getListaPersonagens()) {
 
                     if (tempPersonagem instanceof Sacerdote) {
                         System.out.println(tempPersonagem);
@@ -147,17 +146,21 @@ public class Sistema {
             case 8:
 
                 System.out.println("\nREMOVER PERSONAGEM");
-                System.out.print("Informe o nome do personagem: ");
-                nome = Console.lerString();
+                System.out.print("Informe o id do personagem: ");
+                id = Console.lerInt();
 
-                // tenta excluir personagem com base no nome
-                // informada. O método abaixo retornará true, caso
-                // tenha excluído o personagem, e false, caso não.
-                if (CadastroPersonagem.excluir(nome)) {
+                if (CadastroPersonagens.excluir(id)) {
                     System.out.println("\nPersonagem foi removido com sucesso!");
                 } else {
-                    System.out.println("\nPersonagem " + nome + " não localizado no cadastro");
+                    System.out.println("\nPersonagem " + id + " não localizado no cadastro");
                 }
+
+                break;
+
+            case 9:
+
+                CadastroPersonagens.excluirLista();
+                System.out.println("\nLista foi removida com sucesso!");
 
                 break;
 

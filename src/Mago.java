@@ -1,22 +1,23 @@
-public class Mago extends Personagem{
-    
+public class Mago extends Personagem {
+
     private float mana;
 
-    public Mago(String nome, float vida, float forca, float mana){
-        super(nome, vida, forca);
+    public Mago(int id, String nome, float vida, float forca, float mana) {
+        super(id, nome, vida, forca);
         this.mana = mana;
     }
 
-    public String getMana(){
+    public float getMana() {
         return mana;
     }
 
-    public void setMana(float mana){
+    public void setMana(float mana) {
         this.mana = mana;
     }
 
-    public String totring(){
+    @Override
+    public String toString() {
 
-        return super.totring() + "\nMana: " + mana;
+        return super.toString() + "\nMana: " + mana;
     }
 }
